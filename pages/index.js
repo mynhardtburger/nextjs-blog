@@ -15,8 +15,8 @@ export default function Home({ allPostsData }) {
         <p>
           I'm a software engineer that came from a career as a CPA. Currently I
           spend my working hours writing python to build backend data import
-          functionality at CheckSec. My current learning focus is JS and the web
-          dev process.
+          functionality at CheckSec. <br />
+          My current learning focus is JS and the web dev process.
         </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
