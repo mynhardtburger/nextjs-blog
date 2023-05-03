@@ -6,10 +6,21 @@ import html from "remark-html";
 
 const postDirectory = path.join(process.cwd(), "posts");
 
+export interface PostData {
+  /** Post filename without .md extension. */
+  id: string;
+  date: string;
+  title: string;
+}
+
+export interface PostDataHtml extends PostData {
+  contentHtml: string;
+}
+
 /**
  * Reads the content of files, extracting frontmatter, in the posts directory.
  */
-export function getSortedPostsData() {
+export function getSortedPostsData(): Array<PostData> {
   const fileNames = fs.readdirSync(postDirectory);
   const allPostsData = fileNames.map((fileName) => {
     const id = fileName.replace(/\.md$/, "");
@@ -21,7 +32,8 @@ export function getSortedPostsData() {
 
     return {
       id,
-      ...matterResult.data,
+      date: matterResult.data.date,
+      title: matterResult.data.title,
     };
   });
 
@@ -34,6 +46,9 @@ export function getSortedPostsData() {
   });
 }
 
+/**
+ * Returns an array of params objects containing filename ids.
+ */
 export function getAllPostIds() {
   const fileNames = fs.readdirSync(postDirectory);
 
@@ -46,7 +61,11 @@ export function getAllPostIds() {
   });
 }
 
-export async function getPostData(id) {
+/**
+ * Returns a PostDataHtml object for the given filename id.
+ * @param {string} id  filename
+ */
+export async function getPostData(id: string): Promise<PostDataHtml> {
   const fullPath = path.join(postDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf-8");
   const matterResult = matter(fileContents);
@@ -58,6 +77,7 @@ export async function getPostData(id) {
   return {
     id,
     contentHtml,
-    ...matterResult.data,
+    date: matterResult.data.date,
+    title: matterResult.data.title,
   };
 }
