@@ -13,4 +13,5 @@ This has been a surprisingly smooth experience putting together my first project
 How next.js scales with project size I'm not sure about, but for now the developer experience has been great!.
 
 PS. this entry is was created by adding a markdown file to the right folder with some basic YAML frontmatter. How cool is that?
-[Repo](https://github.com/mynhardtburger/nextjs-blog)
+
+[GitHub repo](https://github.com/mynhardtburger/nextjs-blog)
