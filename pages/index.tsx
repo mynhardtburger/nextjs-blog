@@ -5,6 +5,7 @@ import { getSortedPostsData, PostData } from "../lib/posts";
 import Link from "next/link";
 import Date from "../components/date";
 import { GetStaticProps } from "next";
+import Image from "next/image";
 
 export default function Home({
   allPostsData,
@@ -16,12 +17,31 @@ export default function Home({
       <Head>
         <title>{siteTitle}</title>
       </Head>
+      <span className={utilStyles.flexCenter}>
+        <a href="https://www.linkedin.com/in/mynhardtb/">
+          <Image
+            priority
+            src="/images/linkedin.svg"
+            alt="linkedin"
+            width={25}
+            height={25}
+          />
+        </a>
+        <a href="https://github.com/mynhardtburger">
+          <Image
+            priority
+            src="/images/github.svg"
+            alt="github"
+            width={25}
+            height={25}
+          />
+        </a>
+      </span>
       <section className={utilStyles.headingMd}>
         <p>
-          I'm a software engineer that came from a career as a CPA. Currently I
-          spend my working hours writing python to build backend data import
-          functionality at CheckSec. <br />
-          My current learning focus is JS and the web dev process.
+          Software engineer based in Toronto with an interest in data parsing,
+          integrations and automations. Maybe one day I'll be able to solve some
+          of the problems from my previous life as a CPA.
         </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
